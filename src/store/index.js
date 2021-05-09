@@ -28,7 +28,6 @@ export default new Vuex.Store({
       return suma;
     },
    
-  
   },
   mutations: {
     cargarData(state, payload) {
@@ -91,8 +90,6 @@ export default new Vuex.Store({
         }
         state.ventas = state.historico_ventas;
         
-
-
         // Descontar el stock en el arreglo productos según
         // la cantidad en el carrito.
         state.productos.forEach((producto) => {
