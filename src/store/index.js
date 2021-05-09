@@ -84,6 +84,7 @@ export default new Vuex.Store({
 
           return obj2;
         });
+        //Arreglando vista compras
         for (let i = 0; i < venta.length; i++){
           let pivote = venta[i];
           state.historico_ventas.push(pivote);
