@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 mt-5 pt-5">
-          <h1 class="titulo"><em>Programate Esta Pizza</em></h1>
+          <h1 class="titulo"><em>Prográmate Esta Pizza</em></h1>
         </div>
 
         <div class="col-12 mt-5">
