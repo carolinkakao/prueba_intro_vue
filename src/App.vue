@@ -14,10 +14,11 @@ export default {
     Nav,
   },
   methods: {
-    ...mapActions(["getData"]),
+    ...mapActions(["getData","setDataPizzasDB"]),
   },
   created() {
     this.getData();
+    this.setDataPizzasDB();
   },
 };
 </script>

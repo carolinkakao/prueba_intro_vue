@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-
+import { db } from "../../firebase";
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -106,6 +106,27 @@ export default new Vuex.Store({
       /*Limpiar el carrito cuando se produzca una compra*/
       state.carrito = [];
     },
+    //se usa el metodo add para guardar la data en la coleccion de firestore
+    guardarPizzasEnDB(state) {
+      setTimeout(() => {
+        try {
+          const productos = state.productos;
+          console.log(productos);
+          productos.forEach(async (producto) => {
+            await db.collection("pizzas").add(producto);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }, 2000);
+    },
+    agregarNuevaPizza(state, payload) {
+      // Qué pasaría si el ID existe?
+      // Validar que el ID no exista:
+      const existe = state.productos.find((pizza) => pizza.id === payload.id);
+      // Si no existe ingresar a la base de datos.
+      if (!existe) state.productos.push(payload);
+    },
   },
   actions: {
     async getData({ commit }) {
@@ -123,5 +144,16 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
+    //accion que permite mandar la data inicial a firebase, la data esta en productos como arreglo de objetos en la primera accion
+    async setDataPizzasDB({ commit }) {
+      commit("guardarPizzasEnDB");
+      },
+      //crear nueva pizza
+      async crearNuevaPizza({ commit }, payload) {
+        const pizza = payload;
+        if (!pizza) return;
+        commit("agregarNuevaPizza", pizza);
+        await db.collection("pizzas").add(pizza);
+      },
   },
 });

@@ -5,6 +5,7 @@ import Inventario from "../views/Inventario.vue";
 import Ventas from "../views/Ventas.vue";
 import Carrito from "../views/Carrito.vue";
 import Error404 from "../views/Error404.vue";
+import Crear from "../views/Crear.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     component: Ventas,
   },
   {
+    path: "/crear",
+    name: "Crear",
+    component: Crear,
+  },
+  {
     path: "/carrito",
     name: "Carrito",
     component: Carrito,
@@ -33,6 +39,7 @@ const routes = [
     name: "Error404",
     component: Error404,
   },
+  
 
   //{
    // path: "/about",

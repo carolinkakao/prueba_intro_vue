@@ -32,6 +32,11 @@
               <td>{{ producto.name }}</td>
               <td>{{ producto.price }}</td>
               <td  >{{ producto.stock }} </td>
+               <button
+                  @click="borrarPizza(producto.id)"
+                  class="btn btn-danger">
+                  Borrar Registro
+                </button>
             </tr>
           </tbody>
         </table>
